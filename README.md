@@ -32,6 +32,6 @@ The project contains a main class, so it's executable. The main class creates an
 ```java
 createQuery(Car.class, (cb, root) -> (cb.equal(root.get(Car_.colour), colour)))
         .setMaxResults(10)
-        .setFistResult(5)
+        .setFirstResult(5)
         .getResultList();
 ```
