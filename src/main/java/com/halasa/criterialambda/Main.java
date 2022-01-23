@@ -72,9 +72,9 @@ public class Main {
 			LOGGER.log(Level.INFO, "Pedro Vedro can drive cars: {0}", pedrosCars);
 			
 			// Delete cars, just to make sure the method works
-			
-			carDao.deleteByVendor(renault);
-			
+
+			carDao.deleteByModel(megane);
+
 			List<Car> allCars = carDao.findAll();
 			LOGGER.log(Level.INFO, "All cars: {0}", allCars);
 			

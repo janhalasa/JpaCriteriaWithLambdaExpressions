@@ -1,1 +1,4 @@
 /nbactions.xml
+/target
+*.iml
+.idea

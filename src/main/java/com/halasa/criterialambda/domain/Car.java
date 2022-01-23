@@ -15,8 +15,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Car extends EntityWithId {
 	
-	public static enum Colour {
-		RED, GREEN, BLUE;
+	public enum Colour {
+		RED, GREEN, BLUE
 	}
 
 	@Enumerated(EnumType.STRING)

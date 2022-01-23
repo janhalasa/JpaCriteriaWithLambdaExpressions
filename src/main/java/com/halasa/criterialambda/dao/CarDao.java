@@ -1,6 +1,7 @@
 package com.halasa.criterialambda.dao;
 
 import com.halasa.criterialambda.domain.Car;
+import com.halasa.criterialambda.domain.CarModel;
 import com.halasa.criterialambda.domain.CarModel_;
 import com.halasa.criterialambda.domain.Car_;
 import com.halasa.criterialambda.domain.Driver;
@@ -8,6 +9,7 @@ import com.halasa.criterialambda.domain.Driver_;
 import com.halasa.criterialambda.domain.Vendor;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.Join;
 
 /**
  *
@@ -43,7 +45,7 @@ public class CarDao extends AbstractDao<Car> {
 		return find((cb, root, query) -> (query.where(cb.equal(root.get(Car_.colour), colour)).orderBy(cb.desc(root.get(Car_.id)))));
 	}
 	
-	public void deleteByVendor(Vendor vendor) {
-		deleteWhere((criteriaBuilder, root) -> (criteriaBuilder.equal(root.get(Car_.model).get(CarModel_.vendor), vendor)));
+	public void deleteByModel(CarModel carModel) {
+		deleteWhere((criteriaBuilder, root) -> criteriaBuilder.equal(root.get(Car_.model), carModel));
 	}
 }
