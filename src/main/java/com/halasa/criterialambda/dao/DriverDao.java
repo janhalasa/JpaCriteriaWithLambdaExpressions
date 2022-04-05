@@ -10,10 +10,10 @@ import javax.persistence.EntityManager;
  *
  * @author janhalasa
  */
-public class DriverDao extends AbstractDao<Driver> {
+public class DriverDao extends BasicRepositoryJpa<Driver> {
 	
 	public DriverDao(EntityManager em) {
-		super(Driver.class, em);
+		super(em, DriverDao.class, Driver.class, Driver_.id);
 	}
 	
 	public List<Driver> findByCar(Car car) {

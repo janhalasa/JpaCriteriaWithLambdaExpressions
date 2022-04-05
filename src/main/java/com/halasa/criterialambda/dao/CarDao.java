@@ -9,16 +9,15 @@ import com.halasa.criterialambda.domain.Driver_;
 import com.halasa.criterialambda.domain.Vendor;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.Join;
 
 /**
  *
  * @author janhalasa
  */
-public class CarDao extends AbstractDao<Car> {
+public class CarDao extends BasicRepositoryJpa<Car> {
 	
 	public CarDao(EntityManager em) {
-		super(Car.class, em);
+		super(em, CarDao.class, Car.class, Car_.id);
 	}
 	
 	public List<Car> findByDriver(Driver driver) {
@@ -32,8 +31,11 @@ public class CarDao extends AbstractDao<Car> {
 	public List<Car> findByVendorAndColour(Vendor vendor, Car.Colour colour) {
 		// These criteria could also be written as criteriaBuilder.and(Predicate...), but having it as two parameters is probably easier to read.
 		return findWhere(
-			(criteriaBuilder, root) -> (criteriaBuilder.equal(root.get(Car_.model).get(CarModel_.vendor), vendor)),
-			(criteriaBuilder, root) -> (criteriaBuilder.equal(root.get(Car_.colour), colour))
+			(criteriaBuilder, root) ->
+				criteriaBuilder.and(
+						criteriaBuilder.equal(root.get(Car_.model).get(CarModel_.vendor), vendor),
+						criteriaBuilder.equal(root.get(Car_.colour), colour)
+				)
 		);
 	}
 	
