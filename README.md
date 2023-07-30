@@ -1,4 +1,8 @@
 # JpaCriteriaWithLambdaExpressions #
+
+**This project is deprecated** in favour of [jpa-repositories-with-lambda-expressions](https://github.com/janhalasa/jpa-repositories-with-lambda-expressions), 
+which is a library published on the Maven Central repository. 
+
 Simple Java project demonstrating how to use Lambda expressions with JPA Criteria API.
 
 The project shows how to write Java Persistence API (JPA) Criteria queries in an easier way using Lambda expressions added to Java in version 8. You can take its code and use it in your own projects.
